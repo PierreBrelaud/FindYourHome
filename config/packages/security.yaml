@@ -2,6 +2,12 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: login
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -9,6 +15,12 @@ security:
         main:
             anonymous: true
 
+            #TODO Enlever le com après avoir placer système authentification
+            #guard:
+                #authenticators:
+                #- App\Security\LoginFormAuthenticator
+
+            
             # activate different ways to authenticate
 
             # http_basic: true
