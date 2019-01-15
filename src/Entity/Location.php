@@ -39,7 +39,7 @@ class Location
     private $street;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\accomodation", mappedBy="location", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Accomodation", mappedBy="location", orphanRemoval=true)
      */
     private $accomodations;
 

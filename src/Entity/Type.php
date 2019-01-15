@@ -29,7 +29,7 @@ class Type
     private $icon;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\accomodation", mappedBy="type", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Accomodation", mappedBy="type", orphanRemoval=true)
      */
     private $accomodations;
 
