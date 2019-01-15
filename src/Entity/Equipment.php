@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,16 @@ class Equipment
      * @ORM\Column(type="string", length=255)
      */
     private $icon;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Accomodation", mappedBy="equipments")
+     */
+    private $accomodation_equipments;
+
+    public function __construct()
+    {
+        $this->accomodation_equipments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +63,34 @@ class Equipment
     public function setIcon(string $icon): self
     {
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Accomodation[]
+     */
+    public function getAccomodationEquipments(): Collection
+    {
+        return $this->accomodation_equipments;
+    }
+
+    public function addAccomodationEquipment(Accomodation $accomodationEquipment): self
+    {
+        if (!$this->accomodation_equipments->contains($accomodationEquipment)) {
+            $this->accomodation_equipments[] = $accomodationEquipment;
+            $accomodationEquipment->addEquipment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccomodationEquipment(Accomodation $accomodationEquipment): self
+    {
+        if ($this->accomodation_equipments->contains($accomodationEquipment)) {
+            $this->accomodation_equipments->removeElement($accomodationEquipment);
+            $accomodationEquipment->removeEquipment($this);
+        }
 
         return $this;
     }

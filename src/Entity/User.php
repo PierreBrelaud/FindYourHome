@@ -83,12 +83,18 @@ class User
      */
     private $accomodations;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\accomodation", inversedBy="user_favorites")
+     */
+    private $favorites;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->books = new ArrayCollection();
         $this->bills = new ArrayCollection();
         $this->accomodations = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -323,6 +329,32 @@ class User
             if ($accomodation->getUser() === $this) {
                 $accomodation->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|accomodation[]
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(accomodation $favorite): self
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(accomodation $favorite): self
+    {
+        if ($this->favorites->contains($favorite)) {
+            $this->favorites->removeElement($favorite);
         }
 
         return $this;

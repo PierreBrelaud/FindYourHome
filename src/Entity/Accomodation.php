@@ -101,6 +101,16 @@ class Accomodation
      */
     private $type;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites")
+     */
+    private $user_favorites;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\equipment", inversedBy="accomodation_equipments")
+     */
+    private $equipments;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -108,6 +118,8 @@ class Accomodation
         $this->photos = new ArrayCollection();
         $this->bills = new ArrayCollection();
         $this->books = new ArrayCollection();
+        $this->user_favorites = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -398,6 +410,60 @@ class Accomodation
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUserFavorites(): Collection
+    {
+        return $this->user_favorites;
+    }
+
+    public function addUserFavorite(User $userFavorite): self
+    {
+        if (!$this->user_favorites->contains($userFavorite)) {
+            $this->user_favorites[] = $userFavorite;
+            $userFavorite->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserFavorite(User $userFavorite): self
+    {
+        if ($this->user_favorites->contains($userFavorite)) {
+            $this->user_favorites->removeElement($userFavorite);
+            $userFavorite->removeFavorite($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|equipment[]
+     */
+    public function getEquipments(): Collection
+    {
+        return $this->equipments;
+    }
+
+    public function addEquipment(equipment $equipment): self
+    {
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments[] = $equipment;
+        }
+
+        return $this;
+    }
+
+    public function removeEquipment(equipment $equipment): self
+    {
+        if ($this->equipments->contains($equipment)) {
+            $this->equipments->removeElement($equipment);
+        }
 
         return $this;
     }
