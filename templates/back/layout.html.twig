@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin !</title>
-
+    <link href="{{ asset('css/bootstrap.min.css') }}"  rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-grid.min.css') }}"  rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-reboot.min.css') }}"  rel="stylesheet">
+    {% block style %}{% endblock %}
 
 </head>
 <body>
 {% block content %}{% endblock %}
 </body>
+<script src="{{ asset('/js/jquery.min.css') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.css') }}"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.css') }}"></script>
+{% block script %}{% endblock %}
 </html>
