@@ -65,27 +65,27 @@ class User implements UserInterface
     private $isowner;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\review", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="user", orphanRemoval=true)
      */
     private $reviews;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\book", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="user", orphanRemoval=true)
      */
     private $books;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\bill", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="user", orphanRemoval=true)
      */
     private $bills;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\accomodation", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Accomodation", mappedBy="user", orphanRemoval=true)
      */
     private $accomodations;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\accomodation", inversedBy="user_favorites")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Accomodation", inversedBy="user_favorites")
      */
     private $favorites;
 
@@ -372,7 +372,7 @@ class User implements UserInterface
         return $this;
     }
 
-    
+
     /**
      * @see UserInterface
      */

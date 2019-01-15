@@ -65,22 +65,22 @@ class Accomodation
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\review", mappedBy="accomodation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="accomodation", orphanRemoval=true)
      */
     private $reviews;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\availability", mappedBy="accomodation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Availability", mappedBy="accomodation", orphanRemoval=true)
      */
     private $avalabilities;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\photo", mappedBy="accomodation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="accomodation", orphanRemoval=true)
      */
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\bill", mappedBy="accomodation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="accomodation", orphanRemoval=true)
      */
     private $bills;
 
@@ -91,7 +91,7 @@ class Accomodation
     private $location;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\book", mappedBy="accomodation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="accomodation", orphanRemoval=true)
      */
     private $books;
 
@@ -107,7 +107,7 @@ class Accomodation
     private $user_favorites;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\equipment", inversedBy="accomodation_equipments")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Equipment", inversedBy="accomodation_equipments")
      */
     private $equipments;
 
