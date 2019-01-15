@@ -90,11 +90,6 @@ class User implements UserInterface
     private $favorites;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $login;
-
-    /**
      * @ORM\Column(type="json_array")
      */
     private $roles = [];
@@ -377,18 +372,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getLogin(): ?string
-    {
-        return $this->login;
-    }
-
-    public function setLogin(string $login): self
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
+    
     /**
      * @see UserInterface
      */
