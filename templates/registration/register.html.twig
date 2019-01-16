@@ -18,6 +18,10 @@
     {{ form_widget(registrationForm.phone_fixed,{'attr': {'class': 'form-control'}}) }}
     {{ form_widget(registrationForm.phone_mobile,{'attr': {'class': 'form-control'}}) }}
     {{ form_widget(registrationForm.about,{'attr': {'class': 'form-control'}}) }}
+
+
+    <button class="btn">Register</button>
+    {{ form_end(registrationForm) }}
 </div>
 </body>
 <script src="{{ asset('/js/jquery.min.css') }}"></script>
