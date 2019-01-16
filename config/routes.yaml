@@ -1,3 +1,5 @@
+
+#----------------front routes-------------------------
 home:
   path: /
   controller: App\Controller\HomeController::index
@@ -6,6 +8,40 @@ front_view:
   path: /view/{id}-{name}
   controller: App\Controller\AccomodationController::view
 
+
+#----------------User routes-------------------------
 admin_home_page :
-  path : /profile
+  path : /user
   controller: App\Controller\AdminController::index
+
+
+user_profile :
+  path : /user/profile
+  controller: App\Controller\AdminController::editProfile
+
+user_favorites :
+  path : /user/favorites
+  controller: App\Controller\AdminController::editFavorites
+
+user_reservations :
+  path : /user/reservations
+  controller: App\Controller\AdminController::editReservations
+
+user_bill :
+  path : /user/bill
+  controller: App\Controller\AdminController::editBill
+
+
+#----------------Owner routes-------------------------
+owner_accomodation :
+  path : /owner/accomodation
+  controller: App\Controller\AdminController::editAccomodation
+
+owner_availability :
+  path : /owner/availability
+  controller: App\Controller\AdminController::editAvailability
+
+owner_booking :
+  path : /owner/booking
+  controller: App\Controller\AdminController::editBooking
+
