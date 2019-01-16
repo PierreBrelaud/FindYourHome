@@ -10,10 +10,19 @@ class HomeController extends AbstractController {
 
     public function index(AccomodationRepository $repository)  {
 
+        $datas = array();
         $accomodations = $repository->findAll();
-        dump($accomodations);
+
+        foreach($accomodations as $accomodation) {
+            $mark = $repository->getAccomodationAverageMarks($accomodation->getId())[1];
+            $datas[$accomodation->getId()]['accomodation'] = $accomodation;
+            $datas[$accomodation->getId()]['mark'] = $mark;
+        }
+
+        dump($datas);
+
         return $this->render('front/home.html.twig', [
-            'accomodations' => $accomodations
+            'datas' => $datas
         ]);
     }
 }
