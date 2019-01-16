@@ -109,6 +109,9 @@ class User implements UserInterface
         $this->bills = new ArrayCollection();
         $this->accomodations = new ArrayCollection();
         $this->favorites = new ArrayCollection();
+
+        //A remplacer
+        $this->isowner = false;
     }
 
     public function getId(): ?int

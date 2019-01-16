@@ -26,7 +26,7 @@ class RegistrationController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -36,7 +36,7 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('home_page');
+            return $this->redirectToRoute('/login/home');
         }
 
         return $this->render('registration/register.html.twig', [

@@ -1,3 +1,7 @@
 home:
   path: /
   controller: App\Controller\HomeController::index
+
+admin_home_page :
+  path : /admin/home
+  controller: App\Controller\AdminController::index

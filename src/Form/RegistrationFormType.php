@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -16,7 +17,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -33,6 +34,33 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
         ;
+
+        $builder->add('firstname', TextType::class, [
+        ]);
+
+        $builder->add('lastname', TextType::class, [
+
+        ]);
+
+        $builder->add('mail', TextType::class, [
+
+        ]);
+
+        $builder->add('phone_fixed', TextType::class, [
+
+        ]);
+
+        $builder->add('phone_mobile', TextType::class, [
+
+        ]);
+
+        // TODO Ajouter champ image
+
+        $builder->add('about', TextType::class, [
+
+        ]);
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
