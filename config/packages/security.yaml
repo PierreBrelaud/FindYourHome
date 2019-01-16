@@ -17,6 +17,9 @@ security:
             security: false
         main:
             anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
             #TODO Enlever le com après avoir placer système authentification
             #guard:
