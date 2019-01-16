@@ -39,13 +39,13 @@ user_bill :
 #----------------Owner routes-------------------------
 owner_accomodation :
   path : /owner/accomodation
-  controller: App\Controller\AdminController::editAccomodation
+  controller: App\Controller\OwnerController::editAccomodation
 
 owner_availability :
   path : /owner/availability
-  controller: App\Controller\AdminController::editAvailability
+  controller: App\Controller\OwnerController::editAvailability
 
 owner_booking :
   path : /owner/booking
-  controller: App\Controller\AdminController::editBooking
+  controller: App\Controller\OwnerController::editBooking
 
