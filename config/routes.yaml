@@ -19,6 +19,10 @@ user_profile :
   path : /user/profile
   controller: App\Controller\AdminController::editProfile
 
+user_view :
+  path: /user/view
+  controller: App\Controller\AdminController::editView
+
 user_favorites :
   path : /user/favorites
   controller: App\Controller\AdminController::editFavorites
