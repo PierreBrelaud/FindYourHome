@@ -59,7 +59,7 @@ class Accomodation
     private $street_number;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="accomodations")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="accomodations", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -28,14 +28,15 @@ class AccomodationController extends  AbstractController {
     public function view(Accomodation $accomodation) {
 
         //$test = $this->getDoctrine()->getRepository(Type::class)->find($accomodation->getType()->getId());
-        //dump($test);
+        dump($accomodation->getUser());
         return $this->render('front/view.html.twig', [
             'accomodation'   => $accomodation,
             'type'           => $accomodation->getType(),
             'location'       => $accomodation->getLocation(),
             'equipments'     => $accomodation->getEquipments()->getValues(),
             'availabilities' => $accomodation->getAvalabilities()->getValues(),
-            'photos'         => $accomodation->getPhotos()->getValues()
+            'photos'         => $accomodation->getPhotos()->getValues(),
+            'owner'          => $accomodation->getUser()
         ]);
     }
 }
