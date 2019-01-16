@@ -5,23 +5,23 @@
 
 
 {% block body %}
-    <div class="container-fluid mt-5">
-        <div class="row-fluid">
-            <div class="col-md-7">
 
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-md-7">
                 <h2>{{ accomodation.name }}</h2>
                 <div class="col-md-12">
-                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"
+                    <div id="carouselExampleCaptions" class="carousel slide"
                         style="
                             -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
                             -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
                             box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);">
                         <div class="carousel-inner">
                             <div class="row">
-                                <div class="col-md-7" style="background: red">
+                                <div class="col-md-7">
                                     {% for photo in photos %}
-                                        <div class="{% if photos[0].id == photo.id %}active {% endif %} carousel-item">
-                                            <img class="d-block w-100" src="{{ asset('images/accomodation/' ~ photo.url) }}">
+                                        <div class="{% if photos[0].id == photo.id %}active {% endif %}carousel-item">
+                                            <img class=" w-100" src="{{ asset('images/accomodation/' ~ photo.url) }}">
                                         </div>
                                     {% endfor %}
                                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -37,21 +37,23 @@
 
                                 </div>
                             </div>
-
-
-
-
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
 
-                {{ type.name }} <i class="fas fa-{{ type.icon }}"></i>
 
-                {% for photo in photos %}
-                    <!--<img src="{{ asset('images/accomodation/' ~ photo.url) }}" alt="">-->
-                {% endfor %}
-                <!--{{ dump(accomodation) }}
+
+
+    {{ type.name }} <i class="fas fa-{{ type.icon }}"></i>
+
+    {% for photo in photos %}
+        <!--<img src="{{ asset('images/accomodation/' ~ photo.url) }}" alt="">-->
+    {% endfor %}
+    <!--{{ dump(accomodation) }}
                 {{ dump(type) }}
                 {{ dump(location) }}
                 {{ dump(equipments) }}
@@ -59,9 +61,5 @@
                 {{ dump(photos) }}
 
                 {{ location.country }}-->
-            </div>
-            <div class="col-5"></div>
-        </div>
-    </div>
 
 {% endblock %}
