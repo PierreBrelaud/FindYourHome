@@ -14,13 +14,19 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $usr= $this->get('security.token_storage')->getToken()->getUser();
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+       if($this->getUser() == null) {
+           // get the login error if there is one
+           $error = $authenticationUtils->getLastAuthenticationError();
+           // last username entered by the user
+           $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+           return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+       }
+       else {
+           return $this->redirectToRoute('admin_home_page');
+       }
+
+
     }
 }
