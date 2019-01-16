@@ -16,7 +16,9 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
+            ->add('username' , TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
             ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -32,33 +34,29 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+                'attr' => ['class' => 'form-control'],
             ])
+            ->add('firstname', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('lastname', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('mail', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('phone_fixed', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('phone_mobile', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('about', TextType::class, [
+                'attr' => ['class' => 'form-control'],
+            ])
+
         ;
-
-        $builder->add('firstname', TextType::class, [
-        ]);
-
-        $builder->add('lastname', TextType::class, [
-
-        ]);
-
-        $builder->add('mail', TextType::class, [
-
-        ]);
-
-        $builder->add('phone_fixed', TextType::class, [
-
-        ]);
-
-        $builder->add('phone_mobile', TextType::class, [
-
-        ]);
-
-        // TODO Ajouter champ image
-
-        $builder->add('about', TextType::class, [
-
-        ]);
+        // TODO Ajouter champ image + text area pour about
 
 
     }
