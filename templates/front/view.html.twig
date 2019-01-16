@@ -6,19 +6,47 @@
 
 {% block body %}
 
-    <div class="container mt-5">
-        <h2>{{ accomodation.name }}</h2>
+    <div class="container-fluid mt-5">
+        <div class="row-fluid">
+            <div class="col-md-7">
+                <h2>{{ accomodation.name }}</h2>
 
-        {{ type.name }} <i class="fas fa-{{ type.icon }}"></i>
+                {{ type.name }} <i class="fas fa-{{ type.icon }}"></i>
 
-        {{ dump(accomodation) }}
-        {{ dump(type) }}
-        {{ dump(location) }}
-        {{ dump(equipments) }}
-        {{ dump(availabilities) }}
-        {{ dump(photos) }}
+                {% for photo in photos %}
+                    <img src="{{ asset('images/accomodation/' ~ photo.url) }}" alt="">
+                {% endfor %}
 
-        {{ location.country }}
+
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for photo in photos %}
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{ asset('images/accomodation/' ~ photo.url) }} alt="First slide">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                {{ dump(accomodation) }}
+                {{ dump(type) }}
+                {{ dump(location) }}
+                {{ dump(equipments) }}
+                {{ dump(availabilities) }}
+                {{ dump(photos) }}
+
+                {{ location.country }}
+            </div>
+            <div class="col-5"></div>
+        </div>
     </div>
 
 {% endblock %}
