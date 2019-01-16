@@ -1,15 +1,18 @@
 {% extends "front/layout.html.twig" %}
 {% block body %}
+<form method="post">
 <div class="container">
     <div class="mt-5">
         <div class="row">
             <div class="form-group col-6">
                 {{ form_label(registrationForm.username, 'Username :') }}
                 {{ form_widget(registrationForm.username ) }}
+                {{ form_errors(registrationForm.username) }}
             </div>
            <div class="form-group col-6">
                {{ form_label(registrationForm.password, 'Password :') }}
                {{ form_widget(registrationForm.password) }}
+               {{ form_errors(registrationForm.password) }}
            </div>
         </div>
 
@@ -24,18 +27,20 @@
             </div>
         </div>
 
+        <div class="row"></div>
+
+        <!-- #TODO  add form error-->
         <div class="row">
-            <div class="form-group col-6">
-                {{ form_label(registrationForm.mail, 'Mail :') }}
+            <div class="form-group col-6 {% if  registrationForm.mail.vars.errors %} is-invalid {% endif %}">
+                {{ form_label(registrationForm.mail, 'Mail :')}}
                 {{ form_widget(registrationForm.mail) }}
+                {{ form_errors(registrationForm.mail) }}
             </div>
             <div class="form-group col-6">
                 {{ form_label(registrationForm.phone_fixed, 'Phone fixed :') }}
                 {{ form_widget(registrationForm.phone_fixed) }}
             </div>
-        </div>
 
-        <div class="row">
             <div class="form-group col-6">
                 {{ form_label(registrationForm.phone_mobile, 'Mobile phone :') }}
                 {{ form_widget(registrationForm.phone_mobile) }}
@@ -47,10 +52,11 @@
         </div>
 
         <div class="form-group">
-            <button class="btn">Register</button>
+            <button class="btn" type="submit">Register</button>
         </div>
 
         {{ form_end(registrationForm) }}
     </div>
 </div>
+</form>
 {% endblock %}
