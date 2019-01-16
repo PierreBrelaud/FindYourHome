@@ -4,7 +4,6 @@
 namespace App\Controller;
 
 use App\Repository\AccomodationRepository;
-use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController {
@@ -16,6 +15,5 @@ class HomeController extends AbstractController {
         return $this->render('front/home.html.twig', [
             'accomodations' => $accomodations
         ]);
-
     }
 }
