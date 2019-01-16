@@ -17,9 +17,16 @@ class AccomodationController extends  AbstractController {
 
     }
 
-    public function index() : Response {
+    public function index() {
         return $this->render('front/home.html.twig', [
-            'datas' =>  $this->getDoctrine()->getRepository(Accomodation::class)->findAll(),
+            'datas' =>  $this->getDoctrine()->getRepository(Accomodation::class)->findAll()
+        ]);
+    }
+
+    public function view(Accomodation $accomodation) {
+        dump($accomodation);
+        return $this->render('front/view.html.twig', [
+            'accomodation' => $accomodation
         ]);
     }
 }

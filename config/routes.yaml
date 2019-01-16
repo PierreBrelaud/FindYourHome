@@ -2,6 +2,10 @@ home:
   path: /
   controller: App\Controller\HomeController::index
 
+front_view:
+  path: /view/{id}-{name}
+  controller: App\Controller\AccomodationController::view
+
 admin_home_page :
   path : /admin/home
   controller: App\Controller\AdminController::index

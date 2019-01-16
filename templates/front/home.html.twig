@@ -28,7 +28,7 @@
                                 {{ data['accomodation'].description }}
                             </p>
                             <div class="row-fluid">
-                                <button class="btn btn-primary">Explore</button>
+                                <a class="btn btn-primary" href="{{ path('front_view', {id: data['accomodation'].id, name: data['accomodation'].name }) }}">Explore</a>
                                 <div class="marks float-right">
                                     {% for i in range(1, 5) %}
                                         {% if i <= data['mark'] %}
