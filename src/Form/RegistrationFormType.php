@@ -36,12 +36,15 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('phone_fixed', TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
             ->add('phone_mobile', TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
             ->add('about', TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
 
         ;
