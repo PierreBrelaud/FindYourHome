@@ -119,14 +119,7 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(name="password" , type="string")
-     * @Assert\NotBlank(
-     *     message="Error champ vide"
-     * )
      *
-     * @Assert\Length(
-     *      min = 6,
-     *      minMessage = "Your first name must be at least 6 characters long",
-     * )
      */
     private $password;
 
