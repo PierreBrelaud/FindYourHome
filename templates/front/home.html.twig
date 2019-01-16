@@ -8,7 +8,7 @@
 
     <div class="container mt-5 pl-5 pr-5">
         <div class="row flex">
-            {% for accomodation in accomodations %}
+            {% for data in datas %}
                 <div class="col-3">
                     <div class="card"
                          style="
@@ -23,11 +23,22 @@
                     >
                         <img class="card-img-top" src="{{ asset('images/test.jpg') }}" alt="Card image cap">
                         <div class="card-body">
-                            <h2 style="font-size: 1rem">{{ accomodation.name }}</h2>
+                            <h2 style="font-size: 1rem">{{ data['accomodation'].name }}</h2>
                             <p class="card-text" style="max-height: 7.5rem; overflow: hidden">
-                                {{ accomodation.description }}
+                                {{ data['accomodation'].description }}
                             </p>
-                            <button class="btn btn-primary">Explore</button>
+                            <div class="row-fluid">
+                                <a class="btn btn-primary" href="{{ path('front_view', {id: data['accomodation'].id, name: data['accomodation'].name }) }}">Explore</a>
+                                <div class="marks float-right">
+                                    {% for i in range(1, 5) %}
+                                        {% if i <= data['mark'] %}
+                                            <i class="fas fa-star text-primary"></i>
+                                        {% else %}
+                                            <i class="far fa-star text-primary"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,20 @@ class AccomodationRepository extends ServiceEntityRepository
         parent::__construct($registry, Accomodation::class);
     }
 
+    public function getAccomodationAverageMarks($accomodationId)
+    {
+        $qb = $this->createQueryBuilder("a");
+        $qb->join('a.reviews', 'r');
+        $qb->where('a.id = ' . $accomodationId);
+        $qb->select($qb->expr()->avg('r.mark'));
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * TODO
+     */
+
+
     // /**
     //  * @return Accomodation[] Returns an array of Accomodation objects
     //  */
