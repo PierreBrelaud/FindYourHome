@@ -17,11 +17,10 @@ security:
             security: false
         main:
             anonymous: true
-
-            #TODO Enlever le com après avoir placer système authentification
-            #guard:
-                #authenticators:
-                #- App\Security\LoginFormAuthenticator
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+                provider : app_user_provider
 
 
             # activate different ways to authenticate
@@ -36,4 +35,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/profile, roles: ROLE_USER }

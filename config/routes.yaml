@@ -7,5 +7,5 @@ front_view:
   controller: App\Controller\AccomodationController::view
 
 admin_home_page :
-  path : /admin/home
+  path : /profile
   controller: App\Controller\AdminController::index

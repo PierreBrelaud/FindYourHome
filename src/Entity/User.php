@@ -5,8 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -23,21 +25,39 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Error champ vide"
+     * )
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Error champ vide"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Error champ vide"
+     * )
      */
     private $lastname;
 
     /**
+     *
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Error champ vide"
+     * )
+     *
+     *  @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $mail;
 
@@ -99,6 +119,7 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(name="password" , type="string")
+     *
      */
     private $password;
 
@@ -112,6 +133,16 @@ class User implements UserInterface
 
         //A remplacer
         $this->isowner = false;
+    }
+
+
+    /**
+     * @Assert\Callback
+     *
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+
     }
 
     public function getId(): ?int
