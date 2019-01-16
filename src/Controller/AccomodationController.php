@@ -4,6 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\Accomodation;
+use App\Entity\Type;
+use App\Repository\TypeRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,9 +26,16 @@ class AccomodationController extends  AbstractController {
     }
 
     public function view(Accomodation $accomodation) {
-        dump($accomodation);
+
+        //$test = $this->getDoctrine()->getRepository(Type::class)->find($accomodation->getType()->getId());
+        //dump($test);
         return $this->render('front/view.html.twig', [
-            'accomodation' => $accomodation
+            'accomodation'   => $accomodation,
+            'type'           => $accomodation->getType(),
+            'location'       => $accomodation->getLocation(),
+            'equipments'     => $accomodation->getEquipments()->getValues(),
+            'availabilities' => $accomodation->getAvalabilities()->getValues(),
+            'photos'         => $accomodation->getPhotos()->getValues()
         ]);
     }
 }

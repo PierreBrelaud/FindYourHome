@@ -85,7 +85,7 @@ class Accomodation
     private $bills;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="accomodations")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="accomodations", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;
@@ -96,7 +96,7 @@ class Accomodation
     private $books;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="accomodations")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="accomodations", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
@@ -107,7 +107,7 @@ class Accomodation
     private $user_favorites;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Equipment", inversedBy="accomodation_equipments")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Equipment", inversedBy="accomodation_equipments", fetch="EAGER")
      */
     private $equipments;
 

@@ -9,6 +9,16 @@
     <div class="container mt-5">
         <h2>{{ accomodation.name }}</h2>
 
+        {{ type.name }} <i class="fas fa-{{ type.icon }}"></i>
+
+        {{ dump(accomodation) }}
+        {{ dump(type) }}
+        {{ dump(location) }}
+        {{ dump(equipments) }}
+        {{ dump(availabilities) }}
+        {{ dump(photos) }}
+
+        {{ location.country }}
     </div>
 
 {% endblock %}
