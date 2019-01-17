@@ -80,8 +80,8 @@
     </div>
 
 
-    <div class="container mb-5">
-        <h1>Reviews</h1>
+    <div class="container-fluid bg-primary mb-5 pl-5 pr-5 pt-3 pb-5">
+        <h1 class="text-center text-white">Reviews</h1>
         <div class="mt-5 row d-flex justify-content-around">
             {% for review in reviews %}
                 <div class="card col-md-5">
@@ -132,6 +132,38 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-7 float-left">
+                <h2 class="bg-primary text-white text-center" style="padding: 10px 0;">Your review</h2>
+
+            </div>
+            <div class="col-5">
+                <div class="col-md-10 float-right">
+                    <div class="card profile-card">
+                        <div class="background-block">
+                            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+                        </div>
+                        <div class="profile-thumb-block">
+                            <img src="{{ asset('images/default/user.png') }}" alt="profile-image" class="profile"/>
+                        </div>
+                        <div class="card-content">
+                            <h2>{{ owner.lastname }} {{ owner.firstname }}
+                                <small><i class="fas fa-at"></i> {{ owner.mail }}</small>
+                                {% if  owner.phoneFixed != "" %}
+                                    <small><i class="fas fa-phone"></i> {{ owner.phoneFixed }}</small>
+                                {% endif %}
+                                {% if  owner.phoneMobile != "" %}
+                                    <small><i class="fas fa-mobile"></i> {{ owner.phoneMobile }}</small>
+                                {% endif %}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     {#
