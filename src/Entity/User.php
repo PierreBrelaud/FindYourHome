@@ -87,7 +87,7 @@ class User implements UserInterface
     private $isowner;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="user", orphanRemoval=true, fetch="EAGER")
      */
     private $reviews;
 
