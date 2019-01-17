@@ -11,7 +11,7 @@
             <div class="col-md-5 pl-3 pr-3">
                 <div class="row">
                     <h3 class="bg-primary text-white" style="position:relative;width: 100%;text-align: center; padding: 10px 0;">
-                        <i style="position: absolute;left:1rem;" class="{{ type.icon }}"></i>{{ accomodation.name }}
+                        <i style="position: absolute;left:1rem;top:0.9rem;" class="{{ type.icon }}"></i>{{ accomodation.name }}
                     </h3>
                 </div>
                 <p class="mt-4" style="text-align: justify">{{ accomodation.description }}</p>
@@ -80,7 +80,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container mb-5">
         <h1>Reviews</h1>
         <div class="mt-5 row d-flex justify-content-around">
             {% for review in reviews %}
@@ -139,7 +139,6 @@
     {{ review.mark }}
     {{ review.description }}
     {{ review.date|date("m/d/Y") }}
-    #}
 
     {{ dump(accomodation) }}
     {{ dump(reviews) }}
@@ -150,6 +149,7 @@
     {{ dump(photos) }}
 
     {{ location.country }}
+    #}
     <!--<div class="col-5">
         <div class="col-md-7">
             <div class="card profile-card">
@@ -167,15 +167,6 @@
         </div>
     </div>-->
 
-
-
-
-
-    {{ type.name }} <i class="fas fa-{{ type.icon }}"></i>
-
-    {% for photo in photos %}
-        <!--<img src="{{ asset('images/accomodation/' ~ photo.url) }}" alt="">-->
-    {% endfor %}
 
 
 {% endblock %}
