@@ -6,6 +6,17 @@
 
 {% block body %}
 
+    <div id="home-top" class="row-fluid"
+         style="
+             height: 100vh;
+                 max-width: 100vw;
+                 background-size: cover;
+             background-position:center;
+             background-image: url('{{ asset('images/default/home.jpg') }}')">
+
+
+    </div>
+
     <div class="container mt-5 pl-5 pr-5">
         <div class="row flex">
             {% for data in datas %}
