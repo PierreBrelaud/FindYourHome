@@ -2,11 +2,16 @@
 
 
 namespace App\Controller;
+use App\Entity\Review;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class AdminController extends AbstractController
 {
@@ -58,15 +63,22 @@ class AdminController extends AbstractController
     {
         $data = $request->getContent();
 
-
-
+        $encoder = new JsonEncoder();
+        $test = $encoder->encode($data , 'json');
 
         if(empty($data))
         {
             return new Response('nop ', Response::HTTP_OK);
         }
         else{
-            return new Response('oui '.$data, Response::HTTP_OK);
+
+            $review = $this->getDoctrine()->getRepository(Review::class)->find(1);
+            $review->setTitle($test[0]);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($review);
+            $entityManager->flush();
+            return new Response('oui '.$test['0'], Response::HTTP_OK);
         }
 
     }
