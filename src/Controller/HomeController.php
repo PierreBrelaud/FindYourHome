@@ -19,7 +19,6 @@ class HomeController extends AbstractController {
             $search = $search['search'];
 
             return $this->redirectToRoute('front_search', array('search' => $search));
-
         }
 
         $datas = array();
