@@ -49,6 +49,13 @@ user_bill :
   path : /user/bill
   controller: App\Controller\AdminController::editBill
 
+user_accomodation :
+  path : /user/accomodation
+  controller: App\Controller\AdminController::editAccomodation
+
+add_accomodation :
+  path : /user/accomodation/add
+  controller : App\Controller\AdminController::addAccomodation
 
 #----------------Owner routes-------------------------
 owner_accomodation :

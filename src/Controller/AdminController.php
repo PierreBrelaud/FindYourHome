@@ -2,7 +2,9 @@
 
 
 namespace App\Controller;
+use App\Entity\Accomodation;
 use App\Entity\Review;
+use App\Form\AccomodationFormType;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -114,6 +116,35 @@ class AdminController extends AbstractController
     {
         return $this->render('back/user/bill.html.twig', [
 
+        ]);
+    }
+
+    public function editAccomodation()
+    {
+        return $this->render('back/user/accomodation.html.twig', [
+
+        ]);
+    }
+
+    public function addAccomodation(Request $request)
+    {
+
+        $accomodation = new Accomodation();
+
+        $form = $this->createForm(AccomodationFormType::class, $accomodation);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($accomodation);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_home_page');
+        }
+        return $this->render('back/user/add_accomodation.html.twig', [
+            'accomodation' => $form->createView(),
         ]);
     }
 

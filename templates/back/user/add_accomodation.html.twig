@@ -1,0 +1,72 @@
+{% extends "back/layout.html.twig" %}
+
+{% block content %}
+   <form method="post">
+      <div class="container">
+         <div class="mt-5">
+            <div class="row">
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.name, 'Name :') }}
+                   {{ form_widget(accomodation.name ) }}
+                   {{ form_errors(accomodation.name) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.description, 'description :') }}
+                   {{ form_widget(accomodation.description ) }}
+                   {{ form_errors(accomodation.description) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.rooms, 'rooms :') }}
+                   {{ form_widget(accomodation.rooms ) }}
+                   {{ form_errors(accomodation.rooms) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.bedroom, 'bedroom :') }}
+                   {{ form_widget(accomodation.bedroom ) }}
+                   {{ form_errors(accomodation.bedroom) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.floor, 'floor :') }}
+                   {{ form_widget(accomodation.floor ) }}
+                   {{ form_errors(accomodation.floor) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.state, 'state :') }}
+                   {{ form_widget(accomodation.state ) }}
+                   {{ form_errors(accomodation.state) }}
+               </div>
+               <div class="form-group col-6">
+               <div class="form-group">
+                   {{ form_label(accomodation.date_availability, 'date_availability :') }}
+                   {{ form_widget(accomodation.date_availability ) }}
+                   {{ form_errors(accomodation.date_availability) }}
+               </div>
+
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.street_number, 'street_number :') }}
+                   {{ form_widget(accomodation.street_number ) }}
+                   {{ form_errors(accomodation.street_number) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.street_number, 'street_number :') }}
+                   {{ form_widget(accomodation.street_number ) }}
+                   {{ form_errors(accomodation.street_number) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.type.name, 'type.name :') }}
+                   {{ form_widget(accomodation.type.name ) }}
+                   {{ form_errors(accomodation.type.name) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.type.icon, 'type.icon :') }}
+                   {{ form_widget(accomodation.type.icon ) }}
+                   {{ form_errors(accomodation.type.icon) }}
+               </div>
+
+             {{ form_end(accomodation) }}
+         </div>
+      </div>
+      </div>
+   </form>
+{% endblock %}
