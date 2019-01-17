@@ -4,11 +4,11 @@
 
     <div class="row ">
     {% for review in reviews %}
-            <div class="card col-md-5 d-flex justify-content-around">
+            <div id="card-{{ review.id }}" class="card col-md-5 d-flex justify-content-around">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <div class="review-title" style="line-height: 3.5rem">{{ review.title }}</div>
+                            <div id="card-title-{{ review.id }}" class="review-title" style="line-height: 3.5rem">{{ review.title }}</div>
                         </div>
                         <div class="col-3">
                             {{ review.user.picture }}
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ review.description }}</p>
+                    <p id="card-description-{{ review.id }}" class="card-text">{{ review.description }}</p>
                     {% set difference = date("now").diff(date(review.date)) %}
                     {% set leftDays = difference.days %}
                     {% if leftDays == 1 %}
@@ -48,13 +48,41 @@
                 </div>
                 <div class="card-footer text-muted">
                     <div class="row">
-                        <a href="#" class="btn btn-primary">Update</a>
-                        <a href="#" class="btn btn-primary">Delete</a>
+                        <a id="btn-upd-{{ review.id }}" methods="" class="btn btn-primary btn-upd">Update</a>
+                        <a  class="btn btn-primary">Delete</a>
                     </div>
                 </div>
             </div>
     {% endfor %}
         </div>
 
+        {{ dump(reviews) }}
 
+{% endblock %}
+
+{% block script %}
+<script>
+    $( document ).ready(function() {
+        $(".btn-upd").each(function () {
+          $(this).click(function () {
+              var id = $(this).attr('id').replace('btn-upd-', '');
+              $("#card-description-"+id).replaceWith('<textarea id="card-description-'+id+'" class="form-control" style="height: 100% ; width: 100%">'+  $("#card-description-"+id).text() +'</textarea>');
+              $("#card-title-"+id).replaceWith('<textarea id="card-title-'+id+'" class="form-control">'+  $("#card-title-"+id).text() +'</textarea>');
+
+              $(this).click(function () {
+                  $("#card-description-"+id).replaceWith('<p id="card-description-'+id+'">'+$("#card-description-"+id).text()+'</p>')
+                  $("#card-title-"+id).replaceWith('<p class="review-title" style="line-height: 3.5rem" id="card-title-'+id+'">'+$("#card-title-"+id).text()+'</p>')
+
+
+                  $.post( "/user/review/update" ,{id : id , title : $("#card-title-"+id).text() , content : $("#card-description-"+id).text()}, function( data ) {
+                      console.log(data)
+                  }.JSON);
+
+                  $(this).hide()
+              })
+          })
+
+        })
+    });
+</script>
 {% endblock %}

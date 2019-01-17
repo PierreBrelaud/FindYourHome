@@ -2,12 +2,11 @@
 
 
 namespace App\Controller;
-use App\Entity\Review;
 use App\Form\RegistrationFormType;
-use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends AbstractController
 {
@@ -49,6 +48,27 @@ class AdminController extends AbstractController
             'reviews' => $this->getUser()->getReviews()
 
         ]);
+    }
+
+    /**
+     *
+     * @Route("/user/review/update", methods={"POST","BODY"})
+     */
+    public function updateReviews(Request $request)
+    {
+        $data = $request->getContent();
+
+
+
+
+        if(empty($data))
+        {
+            return new Response('nop ', Response::HTTP_OK);
+        }
+        else{
+            return new Response('oui '.$data, Response::HTTP_OK);
+        }
+
     }
 
     public function editFavorites()

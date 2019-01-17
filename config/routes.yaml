@@ -25,6 +25,10 @@ user_reviews :
   path: /user/reviews
   controller: App\Controller\AdminController::editReviews
 
+reviews_update :
+  path : /user/reviews/upd
+  controller: App\Controller\AdminController::updateReviews
+
 user_favorites :
   path : /user/favorites
   controller: App\Controller\AdminController::editFavorites
@@ -51,5 +55,8 @@ owner_booking :
   path : /owner/booking
   controller: App\Controller\OwnerController::editBooking
 
+
+#----------------Utilities routes-------------------------
 app_logout:
   path: /logout
+
