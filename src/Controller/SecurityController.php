@@ -24,7 +24,7 @@ class SecurityController extends AbstractController
            return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
        }
        else {
-           return $this->redirectToRoute('admin_home_page');
+           return $this->redirectToRoute('home');
        }
 
 

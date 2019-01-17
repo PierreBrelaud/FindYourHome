@@ -16,21 +16,26 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username' , TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
             ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'required' => false,
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('firstname', TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
             ->add('lastname', TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
             ->add('mail', TextType::class, [
                 'attr' => ['class' => 'form-control'],
+                'required' => false
             ])
             ->add('phone_fixed', TextType::class, [
                 'attr' => ['class' => 'form-control'],

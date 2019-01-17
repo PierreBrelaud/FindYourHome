@@ -1,13 +1,25 @@
 {% extends "back/layout.html.twig" %}
 
 {% block content %}
-    <div class="card col-5">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-8">
-                    TEST
+    <div class="row d-flex justify-content-around">
+        <div class="card col-md-5">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="review-title" style="line-height: 3.5rem">TEST</div>
+                    </div>
+                    <div class="col-3">
+                        <img
+                                src="{{ asset('images/default/user.png') }}"
+                                style="width: 3.5rem;height: 3.5rem;border-radius: 50%"
+                        >
+                    </div>
                 </div>
-                <div class="marks float-right col-4">
+            </div>
+            <div class="card-body">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mauris erat, rhoncus sed diam in, consectetur finibus lectus. Suspendisse malesuada sed ante et bibendum. Praesent dignissim congue auctor. Aliquam vestibulum blandit bibendum. Donec venenatis efficitur orci, quis maximus ante dapibus non. Suspendisse a gravida nulla. Sed feugiat ultricies sem, ut consectetur urna convallis eu. Sed risus urna, interdum ut commodo lobortis, luctus at tortor.</p>
+                2 days ago
+                <div class="marks float-right col-4" style="line-height: 2rem">
                     <i class="fas fa-star text-primary"></i>
                     <i class="far fa-star text-primary"></i>
                     <i class="far fa-star text-primary"></i>
@@ -15,27 +27,49 @@
                     <i class="far fa-star text-primary"></i>
                 </div>
             </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <a href="#" class="btn btn-primary">Update</a>
+                    <a href="#" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card col-md-5">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="review-title" style="line-height: 3.5rem">TEST</div>
+                    </div>
+                    <div class="col-3">
+                        <img
+                                src="{{ asset('images/default/user.png') }}"
+                                style="width: 3.5rem;height: 3.5rem;border-radius: 50%"
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mauris erat, rhoncus sed diam in, consectetur finibus lectus. Suspendisse malesuada sed ante et bibendum. Praesent dignissim congue auctor. Aliquam vestibulum blandit bibendum. Donec venenatis efficitur orci, quis maximus ante dapibus non. Suspendisse a gravida nulla. Sed feugiat ultricies sem, ut consectetur urna convallis eu. Sed risus urna, interdum ut commodo lobortis, luctus at tortor.</p>
+                2 days ago
+                <div class="marks float-right col-4" style="line-height: 2rem">
+                    <i class="fas fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <a href="#" class="btn btn-primary">Update</a>
+                    <a href="#" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
         </div>
-        <div class="card-footer text-muted">
-            2 days ago
-        </div>
-    </div>
 
-    <div class="marks float-right">
-        <i class="fas fa-star text-primary"></i>
-        <i class="far fa-star text-primary"></i>
-        <i class="far fa-star text-primary"></i>
-        <i class="far fa-star text-primary"></i>
-        <i class="far fa-star text-primary"></i>
     </div>
+    {{ dump(reviews) }}
+   
 
-    <img
-            class="rounded"
-            src="{{ asset('images/default/accomodation.jpg') }}"
-    >
+
 {% endblock %}

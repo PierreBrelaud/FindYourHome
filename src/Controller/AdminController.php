@@ -2,6 +2,7 @@
 
 
 namespace App\Controller;
+use App\Entity\Review;
 use App\Form\RegistrationFormType;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,9 +19,9 @@ class AdminController extends AbstractController
         ]);
     }
 
-    public function editProfile(Request $request ,$id)
+    public function editProfile(Request $request)
     {
-        $user = $this->getDoctrine()->getRepository(user::class)->find($id);
+        $user = $this->getUser();
 
         $form = $this->createForm(RegistrationFormType::class, $user);
 
@@ -43,7 +44,9 @@ class AdminController extends AbstractController
 
     public function editReviews()
     {
+
         return $this->render('back/user/reviews.html.twig', [
+            'reviews' => $this->getUser()->getReviews()
 
         ]);
     }
