@@ -84,7 +84,7 @@
         <h1 class="text-center text-white">Reviews</h1>
         <div class="mt-5 row d-flex justify-content-around">
             {% for review in reviews %}
-                <div class="card col-md-5">
+                <div class="card col-md-5 mt-5">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
@@ -114,7 +114,9 @@
                         <div class="card-footer text-muted">
                             {% set difference = date("now").diff(date(review.date)) %}
                             {% set leftDays = difference.days %}
-                            {% if leftDays == 1 %}
+                            {% if leftDays == 0 %}
+                                Today,
+                            {% elseif leftDays == 1 %}
                                 1 day ago,
                             {% else %}
                                 {{ leftDays }} days ago,
@@ -139,7 +141,31 @@
         <div class="row">
             <div class="col-7 float-left">
                 <h2 class="bg-primary text-white text-center" style="padding: 10px 0;">Your review</h2>
+                <form method="post">
+                    {{ form_start(form) }}
+                    {{ form_row(form._token) }}
+                    <div class="form-group">
+                        {{ form_label(form.title, 'Title') }}
+                        {{ form_widget(form.title ) }}
+                        {{ form_errors(form.title) }}
+                    </div>
 
+                    <div class="form-group">
+                        {{ form_label(form.mark, 'Mark') }}
+                        {{ form_widget(form.mark ) }}
+                        {{ form_errors(form.mark) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.description, 'Description') }}
+                        {{ form_widget(form.description) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn" type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
             <div class="col-5">
                 <div class="col-md-10 float-right">
@@ -182,23 +208,5 @@
 
     {{ location.country }}
     #}
-    <!--<div class="col-5">
-        <div class="col-md-7">
-            <div class="card profile-card">
-                <div class="background-block">
-                    <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
-                </div>
-                <div class="profile-thumb-block">
-                    <img src="{{ asset('images/default/user.png') }}" alt="profile-image" class="profile"/>
-                </div>
-                <div class="card-content">
-                    <h2>{{ owner.lastname }} {{ owner.firstname }}<small>{{ owner.mail }}</small></h2>
-                    <div class="icon-block"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"> <i class="fab fa-twitter"></i></a><a href="#"> <i class="fab fa-google-plus"></i></a></div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
-
 
 {% endblock %}
