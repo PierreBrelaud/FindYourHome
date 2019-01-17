@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Accomodation;
 use App\Entity\Review;
+use App\Entity\User;
 use App\Form\ReviewFormType;
 use App\Form\SearchFormType;
 use App\Repository\AccomodationRepository;
@@ -41,11 +42,15 @@ class AccomodationController extends AbstractController
         ]);
     }
 
-    public function view(Accomodation $accomodation, Request $request)
+    public function view(Accomodation $accomodation, Request $request, User $user)
     {
         $review = new Review();
         $form = $this->createForm(ReviewFormType::class, $review);
         $form->handleRequest($request);
+
+        $user = new User();
+
+
 
         if($form->isSubmitted() && $form->isValid()) {
 
