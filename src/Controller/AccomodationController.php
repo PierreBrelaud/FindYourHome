@@ -37,7 +37,7 @@ class AccomodationController extends  AbstractController {
             'availabilities' => $accomodation->getAvalabilities()->getValues(),
             'photos'         => $accomodation->getPhotos()->getValues(),
             'owner'          => $accomodation->getUser(),
-        'reviews'            => $accomodation->getReviews()->getValues()
+            'reviews'            => $accomodation->getReviews()->getValues()
         ]);
     }
 }

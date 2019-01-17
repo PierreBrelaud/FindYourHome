@@ -10,23 +10,39 @@
         <div class="row">
             <div class="col-md-5 pl-3 pr-3">
                 <div class="row">
-                    <h2>{{ accomodation.name }}</h2>
-                    <div id="type">
-                        <i class="{{ type.icon }}"></i> {{ type.name }}
+                    <h3 class="bg-primary text-white" style="position:relative;width: 100%;text-align: center; padding: 10px 0;">
+                        <i style="position: absolute;left:1rem;" class="{{ type.icon }}"></i>{{ accomodation.name }}
+                    </h3>
+                </div>
+                <p class="mt-4" style="text-align: justify">{{ accomodation.description }}</p>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Rooms</th>
+                        <th scope="col">Bedrooms</th>
+                        {% if accomodation.floor %}
+                            <th scope="col">Floor</th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ accomodation.rooms }}</td>
+                        <td>{{ accomodation.bedroom }}</td>
+                        {% if accomodation.floor %}
+                            <td>{{ accomodation.bedroom }}</td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+                    <div class="row">
+                        {% for equipment in equipments %}
+                            <div style="margin:0 10px;text-align:center;line-height:3.5rem;height: 3rem;width: 3rem;border-radius: 50%;" class="bg-primary">
+                                <i style="color: white; font-size: 1.5rem;" class="{{ equipment.icon }}"></i>
+                            </div>
+                        {% endfor %}
                     </div>
-                </div>
-                <p style="text-align: justify">{{ accomodation.description }}</p>
-                <div class="row">
-                    <div id="rooms">Rooms {{ accomodation.rooms }}</div>
-                    <div id="bedrooms">Bedrooms {{ accomodation.bedroom }}</div>
-                    {% if accomodation.floor %}
-                        <div id="floor">Floor {{ accomodation.floor }}</div>
-                    {% endif %}
-                </div>
-                {% for equipment in equipments %}
-                    {{ equipment.name }}
-                    {{ equipment.icon }}
-                {% endfor %}
+
             </div>
             <div class="col-md-7 pl-5 pr-5">
                 <div id="carouselExampleCaptions" class="carousel slide"
@@ -65,19 +81,30 @@
 
 
     <div class="container">
-        <div class="row d-flex justify-content-around">
+        <h1>Reviews</h1>
+        <div class="mt-5 row d-flex justify-content-around">
             {% for review in reviews %}
                 <div class="card col-md-5">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
-                                <div class="review-title" style="line-height: 3.5rem">TEST</div>
+                                <div class="review-title" style="line-height: 3.5rem">
+                                    {{ review.title }}
+                                </div>
                             </div>
                             <div class="col-3">
-                                <img
-                                    src="{{ asset('images/default/user.png') }}"
-                                    style="width: 3.5rem;height: 3.5rem;border-radius: 50%"
-                                >
+                                {{ review.user.picture }}
+                                {% if review.user.picture is empty %}
+                                    <img
+                                        src="{{ asset('images/default/user.png') }}"
+                                        style="width: 3.5rem;height: 3.5rem;border-radius: 50%"
+                                    >
+                                {% else %}
+                                    <img
+                                        src="{{ asset('images/user/' ~ review.user.picture) }}"
+                                        style="width: 3.5rem;height: 3.5rem;border-radius: 50%"
+                                    >
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -85,13 +112,22 @@
                         <p class="card-text">{{ review.description }}</p>
                     </div>
                         <div class="card-footer text-muted">
-                            2 days ago
-                            <div class="marks float-right col-4" style="line-height: 2rem">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="far fa-star text-primary"></i>
-                                <i class="far fa-star text-primary"></i>
-                                <i class="far fa-star text-primary"></i>
-                                <i class="far fa-star text-primary"></i>
+                            {% set difference = date("now").diff(date(review.date)) %}
+                            {% set leftDays = difference.days %}
+                            {% if leftDays == 1 %}
+                                1 day ago,
+                            {% else %}
+                                {{ leftDays }} days ago,
+                            {% endif %}
+                            {{ review.date|date("m/d/Y") }}
+                            <div class="marks float-right col-4" style="line-height: 1.5rem">
+                                {% for i in range(1, 5) %}
+                                    {% if i <= review.mark %}
+                                        <i class="fas fa-star text-primary"></i>
+                                    {% else %}
+                                        <i class="far fa-star text-primary"></i>
+                                    {% endif %}
+                                {% endfor %}
                         </div>
                     </div>
                 </div>

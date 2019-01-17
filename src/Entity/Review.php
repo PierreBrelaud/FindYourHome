@@ -37,7 +37,7 @@ class Review
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reviews")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reviews", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
