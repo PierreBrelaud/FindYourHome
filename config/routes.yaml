@@ -1,4 +1,6 @@
 
+
+
 #----------------front routes-------------------------
 home:
   path: /
@@ -49,3 +51,5 @@ owner_booking :
   path : /owner/booking
   controller: App\Controller\OwnerController::editBooking
 
+app_logout:
+  path: /logout

@@ -21,7 +21,8 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
                 provider : app_user_provider
-
+            logout:
+                path:   app_logout
 
             # activate different ways to authenticate
 
