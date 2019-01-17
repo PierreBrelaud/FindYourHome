@@ -1,5 +1,45 @@
 {% extends "back/layout.html.twig" %}
 
 {% block content %}
+    {% for favorite in favorites %}
+        <div class="col-3">
+            <div class="card"
+                 style="
+                            width: 20rem;
+                            max-height: 30rem;
+                            overflow: hidden;
+                            -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+                            -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+                            box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+                            text-align: justify;
+                         "
+            >
+                <img
+                        class="card-img-top"
+                        src="{{ asset('images/default/accomodation.jpg') }}"
+                        alt="Card image cap"
+                >
+                <div class="card-body">
+                    <h2 style="font-size: 1.5rem; width: 100%; text-align: center;" class="text-primary">{{ favorite.name }}</h2>
+                    <i class="fas fa-globe-americas"></i> {{ favorite.location.country }}, {{ favorite.location.city }}
+                    <br>
+                    <i class="fas fa-user"></i> {{ favorite.user.username }}
+                    <div class="row mt-3">
+                        {% for equipment in favorite.equipments %}
+                            <div style="margin:0 5px;text-align:center;line-height:2.2rem;height: 2rem;width: 2rem;border-radius: 50%;" class="bg-primary">
+                                <i style="color: white; font-size: 1rem;" class="{{ equipment.icon }}"></i>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="row-fluid">
+                        <a class="btn btn-primary" href="{{ path('front_view', {id: favorite.id, name: favorite.name }) }}">Explore</a>
+                        <div class="marks float-right">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

@@ -33,6 +33,10 @@ reviews_update :
   path : /user/reviews/upd
   controller: App\Controller\AdminController::updateReviews
 
+reviews_delete :
+  path : /user/reviews/del/{id}
+  controller: App\Controller\AdminController::deleteReviews
+
 user_favorites :
   path : /user/favorites
   controller: App\Controller\AdminController::editFavorites

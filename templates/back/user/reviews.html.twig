@@ -49,7 +49,7 @@
                 <div class="card-footer text-muted">
                     <div class="row">
                         <a id="btn-upd-{{ review.id }}" methods="" class="btn btn-primary btn-upd">Update</a>
-                        <a  class="btn btn-primary">Delete</a>
+                        <a href="{{ path('reviews_delete', { 'id': review.id }) }}" class="btn btn-primary btn-del">Delete</a>
                     </div>
                 </div>
             </div>
@@ -82,6 +82,10 @@
               })
           })
 
+        })
+
+        $(".btn-del").click(function () {
+            location.reload();
         })
     });
 </script>
