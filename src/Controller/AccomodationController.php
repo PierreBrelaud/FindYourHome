@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Accomodation;
 use App\Entity\Review;
 use App\Form\ReviewFormType;
+use App\Form\SearchFormType;
 use App\Repository\AccomodationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,10 +23,21 @@ class AccomodationController extends AbstractController
 
     public function search(AccomodationRepository $repository, Request $request)
     {
+        $form = $this->createForm(SearchFormType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()) {
+            $search = $form->getData();
+            $search = $search['search'];
+
+            return $this->redirectToRoute('front_search', array('search' => $search));
+        }
+
         $search = $request->get('search');
 
         return $this->render('front/search.html.twig', [
-            'datas' => $repository->searchAccomodation($search)
+            'datas' => $repository->searchAccomodation($search),
+            'form'  => $form->createView()
         ]);
     }
 
