@@ -63,14 +63,49 @@
         </div>
     </div>
 
+
     <div class="container">
-        {% for review in reviews %}
-            {{ review.title }}
-            {{ review.mark }}
-            {{ review.description }}
-            {{ review.date|date("m/d/Y") }}
-        {% endfor %}
+        <div class="row d-flex justify-content-around">
+            {% for review in reviews %}
+                <div class="card col-md-5">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="review-title" style="line-height: 3.5rem">TEST</div>
+                            </div>
+                            <div class="col-3">
+                                <img
+                                    src="{{ asset('images/default/user.png') }}"
+                                    style="width: 3.5rem;height: 3.5rem;border-radius: 50%"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi, consequatur consequuntur dolorum ducimus, in inventore ipsam minima nam natus necessitatibus, nulla provident quasi quisquam quos reiciendis ut voluptatem voluptatibus?</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="marks float-right col-4" style="line-height: 2rem">
+                            <i class="fas fa-star text-primary"></i>
+                            <i class="far fa-star text-primary"></i>
+                            <i class="far fa-star text-primary"></i>
+                            <i class="far fa-star text-primary"></i>
+                            <i class="far fa-star text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+    {#
+    {{ review.title }}
+    {{ review.mark }}
+    {{ review.description }}
+    {{ review.date|date("m/d/Y") }}
+    #}
+
     {{ dump(accomodation) }}
     {{ dump(reviews) }}
     {{ dump(type) }}
