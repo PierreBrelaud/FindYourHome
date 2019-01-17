@@ -82,18 +82,17 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi, consequatur consequuntur dolorum ducimus, in inventore ipsam minima nam natus necessitatibus, nulla provident quasi quisquam quos reiciendis ut voluptatem voluptatibus?</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        <div class="marks float-right col-4" style="line-height: 2rem">
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="far fa-star text-primary"></i>
-                            <i class="far fa-star text-primary"></i>
-                            <i class="far fa-star text-primary"></i>
-                            <i class="far fa-star text-primary"></i>
-                        </div>
+                        <p class="card-text">{{ review.description }}</p>
                     </div>
-                    <div class="card-footer text-muted">
-                        2 days ago
+                        <div class="card-footer text-muted">
+                            2 days ago
+                            <div class="marks float-right col-4" style="line-height: 2rem">
+                                <i class="fas fa-star text-primary"></i>
+                                <i class="far fa-star text-primary"></i>
+                                <i class="far fa-star text-primary"></i>
+                                <i class="far fa-star text-primary"></i>
+                                <i class="far fa-star text-primary"></i>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
