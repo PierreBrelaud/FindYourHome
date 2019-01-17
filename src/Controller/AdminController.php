@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 use App\Form\RegistrationFormType;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,8 @@ class AdminController extends AbstractController
 
     public function editProfile(Request $request ,$id)
     {
-        $user = $this->getDoctrine()->getRepository('User')->find($id);
+        $user = $this->getDoctrine()->getRepository(user::class)->find($id);
+
         $form = $this->createForm(RegistrationFormType::class, $user);
 
         $form->handleRequest($request);
