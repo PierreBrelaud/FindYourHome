@@ -65,7 +65,7 @@ class Accomodation
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="accomodation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="accomodation", orphanRemoval=true, fetch="EAGER")
      */
     private $reviews;
 

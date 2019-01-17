@@ -6,37 +6,56 @@
 
 {% block body %}
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 pl-5 pr-5 mb-5">
         <div class="row">
-            <div class="col-md-7">
-                <h2>{{ accomodation.name }}</h2>
-                <div class="col-md-12">
-                    <div id="carouselExampleCaptions" class="carousel slide"
-                        style="
-                            -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-                            -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-                            box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);">
-                        <div class="carousel-inner">
-                            <div class="row">
-                                <div class="col-md-7">
-                                    {% for photo in photos %}
-                                        <div class="{% if photos[0].id == photo.id %}active {% endif %}carousel-item">
-                                            <img class=" w-100" src="{{ asset('images/accomodation/' ~ photo.url) }}">
-                                        </div>
-                                    {% endfor %}
-                                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+            <div class="col-md-5 pl-3 pr-3">
+                <div class="row">
+                    <h2>{{ accomodation.name }}</h2>
+                    <div id="type">
+                        <i class="{{ type.icon }}"></i> {{ type.name }}
+                    </div>
+                </div>
+                <p style="text-align: justify">{{ accomodation.description }}</p>
+                <div class="row">
+                    <div id="rooms">Rooms {{ accomodation.rooms }}</div>
+                    <div id="bedrooms">Bedrooms {{ accomodation.bedroom }}</div>
+                    {% if accomodation.floor %}
+                        <div id="floor">Floor {{ accomodation.floor }}</div>
+                    {% endif %}
+                </div>
+                {% for equipment in equipments %}
+                    {{ equipment.name }}
+                    {{ equipment.icon }}
+                {% endfor %}
+            </div>
+            <div class="col-md-7 pl-5 pr-5">
+                <div id="carouselExampleCaptions" class="carousel slide"
+                    style="
+                        -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+                        -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+                        box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);">
+                    <div class="carousel-inner">
+                        <div class="row">
+                            {% for photo in photos %}
+                                <div class="{% if photos[0].id == photo.id %}active {% endif %}carousel-item"
+                                     style="
+                                         width:100%;
+                                         height: 30rem;
+                                         background-size: cover;
+                                         background-position:center;
+                                         background-image: url('{{ asset('images/accomodation/' ~ photo.url) }}')
+                                     ">
+                                    <!--<img class=" w-100" src="{{ asset('images/accomodation/' ~ photo.url) }}">-->
                                 </div>
-                                <div class="col-md-5" style="background: yellow">
-
-                                </div>
-                            </div>
+                            {% endfor %}
+                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +63,24 @@
         </div>
     </div>
 
-    <div class="col-5">
+    <div class="container">
+        {% for review in reviews %}
+            {{ review.title }}
+            {{ review.mark }}
+            {{ review.description }}
+            {{ review.date|date("m/d/Y") }}
+        {% endfor %}
+    </div>
+    {{ dump(accomodation) }}
+    {{ dump(reviews) }}
+    {{ dump(type) }}
+    {{ dump(location) }}
+    {{ dump(equipments) }}
+    {{ dump(availabilities) }}
+    {{ dump(photos) }}
+
+    {{ location.country }}
+    <!--<div class="col-5">
         <div class="col-md-7">
             <div class="card profile-card">
                 <div class="background-block">
@@ -59,7 +95,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+
+
 
 
 
@@ -68,13 +106,6 @@
     {% for photo in photos %}
         <!--<img src="{{ asset('images/accomodation/' ~ photo.url) }}" alt="">-->
     {% endfor %}
-    {{ dump(accomodation) }}
-    {{ dump(type) }}
-    {{ dump(location) }}
-    {{ dump(equipments) }}
-    {{ dump(availabilities) }}
-    {{ dump(photos) }}
 
-    {{ location.country }}
 
 {% endblock %}
