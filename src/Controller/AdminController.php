@@ -22,9 +22,9 @@ class AdminController extends AbstractController
         ]);
     }
 
-    public function editView()
+    public function editReviews()
     {
-        return $this->render('back/user/view.html.twig', [
+        return $this->render('back/user/reviews.html.twig', [
 
         ]);
     }
