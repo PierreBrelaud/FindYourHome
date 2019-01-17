@@ -92,22 +92,22 @@ class User implements UserInterface
     private $reviews;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="user", orphanRemoval=true , fetch="EAGER")
      */
     private $books;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Bill", mappedBy="user", orphanRemoval=true , fetch="EAGER")
      */
     private $bills;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Accomodation", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Accomodation", mappedBy="user", orphanRemoval=true , fetch="EAGER")
      */
     private $accomodations;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Accomodation", inversedBy="user_favorites")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Accomodation", inversedBy="user_favorites" ,fetch="EAGER")
      */
     private $favorites;
 

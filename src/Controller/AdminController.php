@@ -78,17 +78,30 @@ class AdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($review);
             $entityManager->flush();
-            return new Response('oui '.$test['0'], Response::HTTP_OK);
+            return $this->redirectToRoute('user_favorites');
         }
+
+    }
+
+
+    public function deleteReviews($id)
+    {
+
+        $review = $this->getDoctrine()->getRepository(Review::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($review);
+        $entityManager->flush();
+        return new Response('oui ', Response::HTTP_OK);
 
     }
 
     public function editFavorites()
     {
         return $this->render('back/user/favorites.html.twig', [
-
+            'favorites' => $this->getUser()->getFavorites()
         ]);
     }
+
 
     public function editReservations()
     {
