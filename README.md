@@ -20,6 +20,13 @@ Voici la modélisation UML :
 
 ![alt text](https://raw.githubusercontent.com/PierreBrelaud/FindYourHome/master/uml.jpg)
 
+### Outils
+
+* Symfony 4
+* Wamp Server
+* Phpstorm
+* Umlet (Conception UML)
+
 
 ### Développement
 
