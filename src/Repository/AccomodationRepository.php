@@ -28,10 +28,18 @@ class AccomodationRepository extends ServiceEntityRepository
         return $qb->getQuery()->getOneOrNullResult();
     }
 
-    /**
-     * TODO
-     */
-
+    public function searchAccomodation($search) {
+        $qb = $this->createQueryBuilder('a');
+        $qb->join('a.location', 'l');
+        $qb->where($qb->expr()->orX(
+            $qb->expr()->like('LOWER(a.name)', '?1'),
+            $qb->expr()->like('LOWER(l.country)', '?1'),
+            $qb->expr()->like('LOWER(l.city)', '?1')
+        ));
+        $qb->setParameter('1', '%' . strtolower($search) . '%');
+        $qb->select('a');
+        return $qb->getQuery()->getArrayResult();
+    }
 
     // /**
     //  * @return Accomodation[] Returns an array of Accomodation objects

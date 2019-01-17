@@ -1,0 +1,24 @@
+
+{% extends 'front/layout.html.twig' %}
+
+{% block title 'Search Your Home' %}
+
+{% block body %}
+
+{{ dump(datas) }}
+    <div class="container mt-5">
+        <div class="row col-12">
+            {% for data in datas %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.name }}</h5>
+                        <p class="card-text text-justify">{{ data.description }}</p>
+                        <a class="btn btn-primary" href="{{ path('front_view', {id: data.id, name: data.name }) }}">Explore</a>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

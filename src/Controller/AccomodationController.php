@@ -8,7 +8,6 @@ use App\Entity\Review;
 use App\Form\ReviewFormType;
 use App\Repository\AccomodationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\HttpFoundation\Request;
 
 class AccomodationController extends AbstractController
@@ -16,8 +15,17 @@ class AccomodationController extends AbstractController
 
     public function index(AccomodationRepository $repository)
     {
-        return $this->render('front/home.html.twig', [
+        return $this->render('front/search.html.twig', [
             'datas' => $repository->findAll()
+        ]);
+    }
+
+    public function search(AccomodationRepository $repository, Request $request)
+    {
+        $search = $request->get('search');
+
+        return $this->render('front/search.html.twig', [
+            'datas' => $repository->searchAccomodation($search)
         ]);
     }
 
@@ -28,7 +36,6 @@ class AccomodationController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            dump($form->getData());
 
             $review = $form->getData();
             $review->setUser($this->getUser());

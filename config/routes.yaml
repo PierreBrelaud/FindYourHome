@@ -10,6 +10,10 @@ front_view:
   path: /view/{id}-{name}
   controller: App\Controller\AccomodationController::view
 
+front_search:
+  path: /search/{search}
+  controller: App\Controller\AccomodationController::search
+
 
 #----------------User routes-------------------------
 admin_home_page :

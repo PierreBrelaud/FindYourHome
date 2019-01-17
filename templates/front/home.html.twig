@@ -41,13 +41,18 @@
             <div class="col-md-5 pl-5 pr-5">
                 <h2 class="mb-4">Find Your Home</h2>
                 <div class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aliquam assumenda aut cum doloribus eligendi esse ipsa magni, minus natus necessitatibus nisi nobis, qui quia quidem, reiciendis veritatis voluptates.</div>
-                <form class="form-inline mt-5" style="width: 80%!important">
-                        <div class="col-8">
-                            <input class="form-control w-100" type="search" placeholder="Search" aria-label="Search">
-                        </div>
-                        <div class="col-4">
-                            <button class="btn input-lg" type="submit">Search</button>
-                        </div>
+                <br>
+                <i>Search with name/country/city.</i>
+                <form method="post" class="form-inline mt-5" style="width: 80%!important">
+                    {{ form_start(form) }}
+                    {{ form_row(form._token) }}
+                    <div class="col-8">
+                        {{ form_widget(form.search ) }}
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn" type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -56,53 +61,7 @@
     <div class="container-fluid pt-5 mt-5 pb-5 pl-5 pr-5 bg-primary">
         <h1 style="color: white;width: 100%; text-align: center;" class="mb-3">Explore</h1>
         <div class="row flex pl-5 pr-5">
-            {% for data in datas %}
-                <div class="col-3">
-                    <div class="card"
-                         style="
-                            width: 20rem;
-                            max-height: 30rem;
-                            overflow: hidden;
-                            -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-                            -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-                            box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-                            text-align: justify;
-                         "
-                    >
-                        <img
-                            class="card-img-top"
-                            src="{{ asset('images/default/accomodation.jpg') }}"
-                            alt="Card image cap"
-                        >
-                        <div class="card-body">
-                            <h2 style="font-size: 1.5rem; width: 100%; text-align: center;" class="text-primary">{{ data.accomodation.name }}</h2>
-                            <i class="fas fa-globe-americas"></i> {{ data.accomodation.location.country }}, {{ data.accomodation.location.city }}
-                            <br>
-                            <i class="fas fa-user"></i> {{ data.accomodation.user.username }}
-                            <div class="row mt-3">
-                                {% for equipment in data.accomodation.equipments %}
-                                    <div style="margin:0 5px;text-align:center;line-height:2.2rem;height: 2rem;width: 2rem;border-radius: 50%;" class="bg-primary">
-                                        <i style="color: white; font-size: 1rem;" class="{{ equipment.icon }}"></i>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <hr>
-                            <div class="row-fluid">
-                                <a class="btn btn-primary" href="{{ path('front_view', {id: data.accomodation.id, name: data.accomodation.name }) }}">Explore</a>
-                                <div class="marks float-right">
-                                    {% for i in range(1, 5) %}
-                                        {% if i <= data.mark %}
-                                            <i class="fas fa-star text-primary"></i>
-                                        {% else %}
-                                            <i class="far fa-star text-primary"></i>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+            {% include 'front/cards.html.twig' %}
         </div>
     </div>
 
