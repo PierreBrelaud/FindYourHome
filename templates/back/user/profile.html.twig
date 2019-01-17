@@ -6,27 +6,27 @@
             <div class="mt-5">
                 <div class="row">
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.username, 'Username :') }}
-                        {{ form_widget(registrationForm.username ) }}
-                        {{ form_errors(registrationForm.username) }}
+                        {{ form_label(user.username, 'Username :') }}
+                        {{ form_widget(user.username ) }}
+                        {{ form_errors(user.username) }}
                     </div>
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.password, 'Password :') }}
-                        {{ form_widget(registrationForm.password) }}
-                        {{ form_errors(registrationForm.password) }}
+                        {{ form_label(user.password, 'Password :') }}
+                        {{ form_widget(user.password) }}
+                        {{ form_errors(user.password) }}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.firstname, 'Firstname :') }}
-                        {{ form_widget(registrationForm.firstname) }}
-                        {{ form_errors(registrationForm.firstname) }}
+                        {{ form_label(user.firstname, 'Firstname :') }}
+                        {{ form_widget(user.firstname) }}
+                        {{ form_errors(user.firstname) }}
                     </div>
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.lastname, 'Lastname :') }}
-                        {{ form_widget(registrationForm.lastname) }}
-                        {{ form_errors(registrationForm.lastname) }}
+                        {{ form_label(user.lastname, 'Lastname :') }}
+                        {{ form_widget(user.lastname) }}
+                        {{ form_errors(user.lastname) }}
                     </div>
                 </div>
 
@@ -34,23 +34,23 @@
 
                 <!-- #TODO  add form error-->
                 <div class="row">
-                    <div class="form-group col-6 {% if  registrationForm.mail.vars.errors %} is-invalid {% endif %}">
-                        {{ form_label(registrationForm.mail, 'Mail :')}}
-                        {{ form_widget(registrationForm.mail) }}
-                        {{ form_errors(registrationForm.mail) }}
+                    <div class="form-group col-6 {% if  user.mail.vars.errors %} is-invalid {% endif %}">
+                        {{ form_label(user.mail, 'Mail :')}}
+                        {{ form_widget(user.mail) }}
+                        {{ form_errors(user.mail) }}
                     </div>
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.phone_fixed, 'Phone fixed :') }}
-                        {{ form_widget(registrationForm.phone_fixed) }}
+                        {{ form_label(user.phone_fixed, 'Phone fixed :') }}
+                        {{ form_widget(user.phone_fixed) }}
                     </div>
 
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.phone_mobile, 'Mobile phone :') }}
-                        {{ form_widget(registrationForm.phone_mobile) }}
+                        {{ form_label(user.phone_mobile, 'Mobile phone :') }}
+                        {{ form_widget(user.phone_mobile) }}
                     </div>
                     <div class="form-group col-6">
-                        {{ form_label(registrationForm.about, 'About you :') }}
-                        {{ form_widget(registrationForm.about) }}
+                        {{ form_label(user.about, 'About you :') }}
+                        {{ form_widget(user.about) }}
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
                     <button class="btn" type="submit">Register</button>
                 </div>
 
-                {{ form_end(registrationForm) }}
+                {{ form_end(user) }}
             </div>
         </div>
     </form>
