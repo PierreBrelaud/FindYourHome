@@ -122,8 +122,9 @@ class AdminController extends AbstractController
 
     public function editAccomodation()
     {
+        $accomodations = $this->getDoctrine()->getRepository(Accomodation::class)->findAll();
         return $this->render('back/user/accomodation.html.twig', [
-
+            "accomodatins" => $accomodations
         ]);
     }
 
@@ -139,7 +140,7 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $accomodation->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($accomodation);
             $entityManager->flush();

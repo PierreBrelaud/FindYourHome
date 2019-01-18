@@ -2,78 +2,95 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Accomodation;
-use App\Entity\Review;
-use App\Entity\User;
-use App\Form\ReviewFormType;
-use App\Form\SearchFormType;
+use App\Form\AccomodationType;
 use App\Repository\AccomodationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/accomodation")
+ */
 class AccomodationController extends AbstractController
 {
-
-    public function index(AccomodationRepository $repository)
+    /**
+     * @Route("/", name="accomodation_index", methods={"GET"})
+     */
+    public function index(AccomodationRepository $accomodationRepository): Response
     {
-        return $this->render('front/search.html.twig', [
-            'datas' => $repository->findAll()
+        return $this->render('accomodation/index.html.twig', [
+            'accomodations' => $accomodationRepository->findAll(),
         ]);
     }
 
-    public function search(AccomodationRepository $repository, Request $request)
+    /**
+     * @Route("/new", name="accomodation_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
     {
-        $form = $this->createForm(SearchFormType::class);
+        $accomodation = new Accomodation();
+        $form = $this->createForm(AccomodationType::class, $accomodation);
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
-            $search = $form->getData();
-            $search = $search['search'];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($accomodation);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('front_search', array('search' => $search));
+            return $this->redirectToRoute('accomodation_index');
         }
 
-        $search = $request->get('search');
-
-        return $this->render('front/search.html.twig', [
-            'datas' => $repository->searchAccomodation($search),
-            'form'  => $form->createView()
+        return $this->render('accomodation/new.html.twig', [
+            'accomodation' => $accomodation,
+            'form' => $form->createView(),
         ]);
     }
 
-    public function view(Accomodation $accomodation, Request $request, User $user)
+    /**
+     * @Route("/{id}", name="accomodation_show", methods={"GET"})
+     */
+    public function show(Accomodation $accomodation): Response
     {
-        $review = new Review();
-        $form = $this->createForm(ReviewFormType::class, $review);
+        return $this->render('accomodation/show.html.twig', [
+            'accomodation' => $accomodation,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="accomodation_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Accomodation $accomodation): Response
+    {
+        $form = $this->createForm(AccomodationType::class, $accomodation);
         $form->handleRequest($request);
 
-        $user = new User();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
 
+            return $this->redirectToRoute('accomodation_index', [
+                'id' => $accomodation->getId(),
+            ]);
+        }
 
+        return $this->render('accomodation/edit.html.twig', [
+            'accomodation' => $accomodation,
+            'form' => $form->createView(),
+        ]);
+    }
 
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $review = $form->getData();
-            $review->setUser($this->getUser());
-            $review->setAccomodation($accomodation);
-            $review->setDate(new \DateTime());
-
+    /**
+     * @Route("/{id}", name="accomodation_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Accomodation $accomodation): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$accomodation->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($review);
+            $entityManager->remove($accomodation);
             $entityManager->flush();
         }
 
-        return $this->render('front/view.html.twig', [
-            'accomodation'   => $accomodation,
-            'type'           => $accomodation->getType(),
-            'location'       => $accomodation->getLocation(),
-            'equipments'     => $accomodation->getEquipments()->getValues(),
-            'availabilities' => $accomodation->getAvalabilities()->getValues(),
-            'photos'         => $accomodation->getPhotos()->getValues(),
-            'owner'          => $accomodation->getUser(),
-            'reviews'        => $accomodation->getReviews()->getValues(),
-            'form'           => $form->createView()
-        ]);
+        return $this->redirectToRoute('accomodation_index');
     }
 }

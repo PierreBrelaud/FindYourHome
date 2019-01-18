@@ -27,6 +27,8 @@ Voici la modélisation UML :
 * Phpstorm
 * Umlet (Conception UML)
 
+### Prérequis
+* Avoir une base de donnée mysql version 8 sous peine de bug
 
 ### Développement
 
@@ -146,7 +148,6 @@ Une page de recherche est créée avec le bien sous forme de card
  * Gestion deds disponibilités
  * Gestion factures
  * Gestion favoris
-
  
- ##### Dernière mise à jour le 17/01/2019
+ ##### Dernière mise à jour le 18/01/2019
  

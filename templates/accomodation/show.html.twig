@@ -1,0 +1,52 @@
+{% extends "back/layout.html.twig" %}
+
+{% block content %}
+    <h1>Accomodation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ accomodation.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ accomodation.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ accomodation.description }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de pièces</th>
+                <td>{{ accomodation.rooms }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de chambres</th>
+                <td>{{ accomodation.bedroom }}</td>
+            </tr>
+            <tr>
+                <th>Etage</th>
+                <td>{{ accomodation.floor }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ accomodation.state ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Date de disponibilité</th>
+                <td>{{ accomodation.dateAvailability ? accomodation.dateAvailability|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Numéro de rue</th>
+                <td>{{ accomodation.streetNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('accomodation_index') }}">back to list</a>
+
+    <a href="{{ path('accomodation_edit', {'id': accomodation.id}) }}">edit</a>
+
+    {{ include('accomodation/_delete_form.html.twig') }}
+{% endblock %}
