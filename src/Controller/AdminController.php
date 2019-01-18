@@ -56,7 +56,8 @@ class AdminController extends AbstractController
 
         ]);
     }
-
+    
+    //Gustavo stp fixe sa pls
     /**
      *
      * @Route("/user/review/update", methods={"POST","BODY"})
@@ -126,6 +127,8 @@ class AdminController extends AbstractController
         ]);
     }
 
+
+    //Gustavo stp fixe sa pls
     public function addAccomodation(Request $request)
     {
 

@@ -55,7 +55,10 @@ class AccomodationFormType extends AbstractType
                 'required' => false
             ])
 
-            ->add('type', TypeFormType::class);;
+
+            ->add('type', TypeFormType::class)
+
+            ->add('location', LocationFormType::class)
             ;
     }
 

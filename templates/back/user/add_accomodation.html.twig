@@ -31,7 +31,7 @@
                    {{ form_errors(accomodation.floor) }}
                </div>
                <div class="form-group col-6">
-                   {{ form_label(accomodation.state, 'state :') }}
+                   {{ form_label(accomodation.state, 'visibility :') }}
                    {{ form_widget(accomodation.state ) }}
                    {{ form_errors(accomodation.state) }}
                </div>
@@ -49,11 +49,6 @@
                    {{ form_errors(accomodation.street_number) }}
                </div>
                <div class="form-group col-6">
-                   {{ form_label(accomodation.street_number, 'street_number :') }}
-                   {{ form_widget(accomodation.street_number ) }}
-                   {{ form_errors(accomodation.street_number) }}
-               </div>
-               <div class="form-group col-6">
                    {{ form_label(accomodation.type.name, 'type.name :') }}
                    {{ form_widget(accomodation.type.name ) }}
                    {{ form_errors(accomodation.type.name) }}
@@ -62,6 +57,30 @@
                    {{ form_label(accomodation.type.icon, 'type.icon :') }}
                    {{ form_widget(accomodation.type.icon ) }}
                    {{ form_errors(accomodation.type.icon) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.location.country, 'location.country :') }}
+                   {{ form_widget(accomodation.location.country ) }}
+                   {{ form_errors(accomodation.location.country) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.location.postal_code, 'location.postal_code :') }}
+                   {{ form_widget(accomodation.location.postal_code ) }}
+                   {{ form_errors(accomodation.location.postal_code) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.location.city, 'location.city :') }}
+                   {{ form_widget(accomodation.location.city ) }}
+                   {{ form_errors(accomodation.location.city) }}
+               </div>
+               <div class="form-group col-6">
+                   {{ form_label(accomodation.location.street, 'location.street :') }}
+                   {{ form_widget(accomodation.location.street ) }}
+                   {{ form_errors(accomodation.location.street) }}
+               </div>
+
+               <div class="form-group">
+                  <button class="btn" type="submit">Register</button>
                </div>
 
              {{ form_end(accomodation) }}
