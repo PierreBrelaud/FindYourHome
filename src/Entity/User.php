@@ -112,13 +112,13 @@ class User implements UserInterface
     private $favorites;
 
     /**
-     * @ORM\Column(type="json_array")
+     * @ORM\Column(type="array")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
-     * @ORM\Column(name="password" , type="string")
+     * @ORM\Column(name="password" , type="string", length=255)
      *
      */
     private $password;
