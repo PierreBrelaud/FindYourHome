@@ -122,17 +122,17 @@ class User implements UserInterface
      */
     private $password;
 
-    public function __construct()
-    {
-        $this->reviews = new ArrayCollection();
-        $this->books = new ArrayCollection();
-        $this->bills = new ArrayCollection();
-        $this->accomodations = new ArrayCollection();
-        $this->favorites = new ArrayCollection();
+    // public function __construct()
+    // {
+    //     $this->reviews = new ArrayCollection();
+    //     $this->books = new ArrayCollection();
+    //     $this->bills = new ArrayCollection();
+    //     $this->accomodations = new ArrayCollection();
+    //     $this->favorites = new ArrayCollection();
 
-        //A remplacer
-        $this->isowner = false;
-    }
+    //     //A remplacer
+    //     $this->isowner = false;
+    // }
 
 
     /**
