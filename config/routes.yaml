@@ -75,3 +75,7 @@ owner_booking :
 app_logout:
   path: /logout
 
+#----------------Api routes-------------------------------
+api_accomodations:
+  path: /api/accomodations
+  controller: App\Controller\Api\AccomodationController::index
