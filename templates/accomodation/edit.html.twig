@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+{% extends "back/layout.html.twig" %}
 
-<title>Edit Accomodation</title>
 
-{% block body %}
-    <h1>Edit Accomodation</h1>
+{% block content %}
+    <h1>Edition de l'hébergement</h1>
 
     {{ include('accomodation/_form.html.twig', {'button_label': 'Update'}) }}
 

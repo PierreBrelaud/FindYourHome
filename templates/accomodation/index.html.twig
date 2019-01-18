@@ -26,6 +26,7 @@
         <tbody>
         {% for accomodation in accomodations %}
             <tr>
+                <td>{{ accomodation.id }}</td>
                 <td>{{ accomodation.name }}</td>
                 <td>{{ accomodation.description }}</td>
                 <td>{{ accomodation.rooms }}</td>
@@ -47,5 +48,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary btn-sm" href="{{ path('accomodation_new') }}">Ajouter un hébergement</a>
+    <a class="btn btn-primary btn-sm" href="{{ path('add_accomodation') }}">Ajouter un hébergement</a>
 {% endblock %}
