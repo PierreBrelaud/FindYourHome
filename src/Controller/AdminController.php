@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use App\Form\UpdateUserProfileType;
 
 class AdminController extends AbstractController
 {
@@ -29,11 +30,15 @@ class AdminController extends AbstractController
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UpdateUserProfileType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $user->getPicture();
+
+            // @Todo Continue this (The form does not currently get the data)
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
