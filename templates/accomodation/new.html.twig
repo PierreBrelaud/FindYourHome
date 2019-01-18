@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Accomodation</title>
+
+{% block body %}
+    <h1>Create new Accomodation</h1>
+
+    {{ include('accomodation/_form.html.twig') }}
+
+    <a href="{{ path('accomodation_index') }}">back to list</a>
+{% endblock %}

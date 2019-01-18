@@ -11,6 +11,7 @@ use App\Entity\Accomodation;
 use App\Entity\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,15 +30,15 @@ class AccomodationFormType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'required' => false
             ])
-            ->add('rooms' , TextType::class, [
+            ->add('rooms' , IntegerType::class, [
                 'attr' => ['class' => 'form-control'],
                 'required' => false
             ])
-            ->add('bedroom' , TextType::class, [
+            ->add('bedroom' , IntegerType::class, [
                 'attr' => ['class' => 'form-control'],
                 'required' => false
             ])
-            ->add('floor' , TextType::class, [
+            ->add('floor' , IntegerType::class, [
                 'attr' => ['class' => 'form-control'],
                 'required' => false
             ])
@@ -50,13 +51,13 @@ class AccomodationFormType extends AbstractType
                 'html5' => false,
                 'widget' => 'choice',
             ])
-            ->add('street_number' , TextType::class, [
+            ->add('street_number' , IntegerType::class, [
                 'attr' => ['class' => 'form-control'],
                 'required' => false
             ])
 
 
-            ->add('type', TypeFormType::class)
+            ->add('type', TypeType::class)
 
             ->add('location', LocationFormType::class)
             ;

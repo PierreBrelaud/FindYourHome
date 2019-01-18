@@ -12,7 +12,7 @@ use App\Repository\AccomodationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
-class AccomodationController extends AbstractController
+class AccomodationController1 extends AbstractController
 {
 
     public function index(AccomodationRepository $repository)

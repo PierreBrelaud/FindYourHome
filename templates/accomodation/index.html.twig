@@ -1,0 +1,51 @@
+{% extends "back/layout.html.twig" %}
+
+{% block title %}
+    Liste des hébergements
+{% endblock %}
+
+
+{% block content %}
+    <h1>Liste des hébergements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Chambres</th>
+                <th>Salle(s) de bain(s)</th>
+                <th>Etage</th>
+                <th>Libre</th>
+                <th>Date_availability</th>
+                <th>Numéro de rue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for accomodation in accomodations %}
+            <tr>
+                <td>{{ accomodation.name }}</td>
+                <td>{{ accomodation.description }}</td>
+                <td>{{ accomodation.rooms }}</td>
+                <td>{{ accomodation.bedroom }}</td>
+                <td>{{ accomodation.floor }}</td>
+                <td>{{ accomodation.state ? 'Oui' : 'Non' }}</td>
+                <td>{{ accomodation.dateAvailability ? accomodation.dateAvailability|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ accomodation.streetNumber }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{{ path('accomodation_show', {'id': accomodation.id}) }}">Voir</a>
+                    <a class="btn btn-info btn-sm" href="{{ path('accomodation_edit', {'id': accomodation.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-sm" href="{{ path('accomodation_new') }}">Ajouter un hébergement</a>
+{% endblock %}

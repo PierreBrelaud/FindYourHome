@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<title>Accomodation</title>
+
+{% block body %}
+    <h1>Accomodation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ accomodation.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ accomodation.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ accomodation.description }}</td>
+            </tr>
+            <tr>
+                <th>Rooms</th>
+                <td>{{ accomodation.rooms }}</td>
+            </tr>
+            <tr>
+                <th>Bedroom</th>
+                <td>{{ accomodation.bedroom }}</td>
+            </tr>
+            <tr>
+                <th>Floor</th>
+                <td>{{ accomodation.floor }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ accomodation.state ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Date_availability</th>
+                <td>{{ accomodation.dateAvailability ? accomodation.dateAvailability|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Street_number</th>
+                <td>{{ accomodation.streetNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('accomodation_index') }}">back to list</a>
+
+    <a href="{{ path('accomodation_edit', {'id': accomodation.id}) }}">edit</a>
+
+    {{ include('accomodation/_delete_form.html.twig') }}
+{% endblock %}
