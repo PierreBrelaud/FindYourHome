@@ -16,6 +16,18 @@ class HomeController extends AbstractController {
     public function index(AccomodationRepository $repository, Request $request, EntityManagerInterface $emg)  {
 
         //------------------------------------------------
+        //dd($this->get('session')->get('visitorId'));
+        $visitorId = $this->get('session')->get('visitorId');
+        $visitor = $emg->getRepository(NodeVisitor::class)->findOneBy(['name' => $visitorId]);
+
+        if(!$visitor) {
+            $nodeVisitor = new NodeVisitor();
+            $nodeVisitor->setName($visitorId);
+            $nodeVisitor->setAge(23);
+            $emg->persist($nodeVisitor);
+            $emg->flush();
+        }
+
         /*$test = new NodeVisitor();
         $test->setName('Brelaud Pierre');
         $test->setAge(23);
