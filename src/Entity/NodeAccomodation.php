@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Entity;
-
 use GraphAware\Neo4j\OGM\Annotations as OGM;
 use GraphAware\Neo4j\OGM\Common\Collection;
 
 /**
- * @OGM\Node(label="Visitor")
+ * @OGM\Node(label="Accomodation")
  */
-class NodeVisitor {
-
-
+class NodeAccomodation
+{
     /** @OGM\GraphId() */
     protected $id;
 
@@ -18,7 +16,7 @@ class NodeVisitor {
     protected $name;
 
     /**
-     * @OGM\Relationship(relationshipEntity="NodeConsultation",direction="OUTGOING", type="CONSULT", collection=true, mappedBy="visitor")
+     * @OGM\Relationship(relationshipEntity="NodeConsultation",direction="INCOMING", type="CONSULT", collection=true, mappedBy="accomodation")
      */
     protected $consultations;
 
@@ -77,6 +75,7 @@ class NodeVisitor {
     {
         $this->consultations = $consultations;
     }
+
 
 
 }
